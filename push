@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ $1 = "reset" ]; then
+  rm -rf .git
+  git init
+  git remote add origin https://github.com/darccyy/garfield2.git
+fi
+
+for year in {1992..2023}; do
+  echo "======== $year ========="
+  git add "comic/$year-*.png"
+  git commit -m "$year"
+  echo "======== $year ========="
+  git push -u origin master
+done
